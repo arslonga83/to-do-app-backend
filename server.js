@@ -1,15 +1,21 @@
 const express = require('express')
-const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const cors = require('cors')
+
+
 
 const loginRouter = require('./routes/login.router')
 const registerRouter = require('./routes/register.router')
+const indexRouter = require('./routes/index.router')
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
-
-
+app.use(cors())
 app.use(express.json())
+
+
+app.use('/', indexRouter)
 
 app.use('/register', registerRouter)
 

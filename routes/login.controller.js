@@ -15,9 +15,9 @@ async function loginUser (req, res) {
     return
   }
   const token = jwt.sign({
-    username: user.username
+    name: user.username
   }, 'secret', { expiresIn: '1h' })
-  res.status(200).json(token)
+  res.status(200).json({ token })
 }
 
 module.exports = {
